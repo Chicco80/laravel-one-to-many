@@ -20,8 +20,11 @@
         <td><a href="{{route('admin.posts.show',$post->id)}}">{{$post->title}}</a></td>
         <td>{{$post->created_at}}</td>
         <td><a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-primary">Modifica</a></td>
-        <td><a href="{{route('admin.posts.destroy',$post->id)}}" class="btn btn-danger">Elimina</a></td>
-
+        <form action="{{route('admin.posts.destroy', $post->id)}}" method="post">
+        @csrf
+        @method('DELETE')
+        <td> <button type="submit" class="btn btn-danger">Cancella</button></td>
+        </form>
       </tr>
       @endforeach
       

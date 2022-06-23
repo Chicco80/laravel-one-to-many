@@ -5,12 +5,17 @@
     @csrf
     <div class="mb-3">
       <label for="title" class="form-label" placeholder="Title" value="{{old('title')}}">Titolo</label>
-      <input type="text" name="title" placeholderclass="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div></div>
+      <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" aria-describedby="emailHelp">
+      @error('title')
+                  <div class="alert alert-danger">{{$message}}</div>
+      @enderror
     </div>
     <div class="mb-3">
       <label for="content" class="form-label">Content</label>
-      <textarea class="form-control" id="content" name="content"cols="30" rows="10">{{old('content')}}</textarea>
+      <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content"cols="30" rows="10">{{old('content')}}</textarea>
+      @error('content')
+                  <div class="alert alert-danger">{{$message}}</div>
+      @enderror
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" name="published" class="form-check-input" id="published" {{old('published') ? 'checked': ''}}>

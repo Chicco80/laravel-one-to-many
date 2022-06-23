@@ -7,13 +7,13 @@
     @csrf
     @method('PUT')
     <div class="mb-3">
-      <label for="title" class="form-label" placeholder="Title" value="{{old('title')}}">Titolo</label>
-      <input type="text" name="title" placeholderclass="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <label for="title" class="form-label" placeholder="Title">Titolo</label>
+      <input type="text" name="title" placeholderclass="form-control" id="title" value="{{$post->title}}" >
       <div></div>
     </div>
     <div class="mb-3">
       <label for="content" class="form-label">Content</label>
-      <textarea class="form-control" id="content" name="content"cols="30" rows="10">{{old('content')}}</textarea>
+      <textarea class="form-control" id="content" name="content"cols="30" rows="10">{{$post->content}}</textarea>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" name="published" class="form-check-input" id="published" {{old('published') ? 'checked': ''}}>
@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3">
       <label for="category_id">Category</label>
-      <select name="category_id" class="form-control" id="category_id">
+      <select name="category_id" class="form-control" value="{{$post->category_id}}" id="category_id">
         <option value="">Select Category</option>
       @foreach ($categories as $category)
       <option value="{{$category->id}}">{{$category->name}}</option>
